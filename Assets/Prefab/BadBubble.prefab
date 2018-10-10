@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 4936764931605738}
   - component: {fileID: 33882847983862772}
   - component: {fileID: 23678686966715192}
+  - component: {fileID: 111292213831328770}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -151,6 +152,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!111 &111292213831328770
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972553688629320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9fc3bfefaaf3fc54b8aeac610c1d7134, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9fc3bfefaaf3fc54b8aeac610c1d7134, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114065924506970364
 MonoBehaviour:
   m_ObjectHideFlags: 1

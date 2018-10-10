@@ -13,7 +13,7 @@ public class BubbleManager : MonoBehaviour {
     [SerializeField] GamePlay gamePlay;
     private GameObject newBubble;
  
-    Vector3[] positions = new Vector3[8];
+    public Transform[] positions = new Transform[12];
     string[] modes = new string []{"EASY MODE: ", "NORMAL MODE: ", "HARD MODE: " };
 
     public int minCountOfBables;
@@ -45,8 +45,8 @@ public class BubbleManager : MonoBehaviour {
       {
         int were;
         int what;
-        int range = 8;
-         int[] MasOfVar = new int[] { 0, 1, 2, 3, 4, 5, 6, 7};
+        int range = 12;
+         int[] MasOfVar = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
          for(int i = 0; i < quantity;i++)
          {
@@ -59,7 +59,7 @@ public class BubbleManager : MonoBehaviour {
             
             if (what == 0)
             {
-                newBubble = Instantiate(prefabBubble, positions[MasOfVar[were]], transform.rotation);
+                newBubble = Instantiate(prefabBubble, positions[MasOfVar[were]].position, transform.rotation);
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
@@ -69,7 +69,7 @@ public class BubbleManager : MonoBehaviour {
 
             if (what == 1)
             {
-                newBubble = Instantiate(badBubblePrefab, positions[MasOfVar[were]], transform.rotation);
+                newBubble = Instantiate(badBubblePrefab, positions[MasOfVar[were]].position, transform.rotation);
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
@@ -78,7 +78,7 @@ public class BubbleManager : MonoBehaviour {
             }
             if(what == 2)
             {
-                newBubble = Instantiate(shellPrefab, positions[MasOfVar[were]], transform.rotation);
+                newBubble = Instantiate(shellPrefab, positions[MasOfVar[were]].position, transform.rotation);
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
                 newBubble.GetComponent<actionWithShell>().gameManager = this.gameManager;
                 range--;
@@ -103,14 +103,14 @@ public class BubbleManager : MonoBehaviour {
         intervalToCreateBubble = gameManager.interval;
 
 
-        positions[0] = new Vector3(-2.15f, -5f, 0f);
+          /* positions[0] = new Vector3(-2.15f, -5f, 0f);
            positions[1] = new Vector3(-0.85f, -5f, 0f);
            positions[2] = new Vector3(0.85f, -5f, 0f);
            positions[3] = new Vector3(2.15f, -5f, 0f);
            positions[4] = new Vector3(-2.15f, -6f, 0f);
            positions[5] = new Vector3(-0.85f, -6f, 0f);
            positions[6] = new Vector3(0.85f, -6f, 0f);
-           positions[7] = new Vector3(2.15f, -6f, 0f);
+           positions[7] = new Vector3(2.15f, -6f, 0f);*/
        }
 
        private void modeUp(int wave)

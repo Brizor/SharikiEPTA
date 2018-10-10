@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour {
             health--;
             if (health >= 1)
             {
-                badReactionAnim.GetComponent<Animation>().Play();
                 soundActive(badClip);
 
             }
@@ -145,7 +144,7 @@ public class GameManager : MonoBehaviour {
 
         gameOver = false;
 
-        typeOfLine = 1;
+        typeOfLine = 0;
         healthText.text = "HEALTH: " + health.ToString();
         scoreText.text = "SCORE: " + score.ToString();
 
