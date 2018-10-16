@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\BubbleManager.cs" />
     <Compile Include="Assets\Scripts\BubbleMove.cs" />
     <Compile Include="Assets\Scripts\Conveyor.cs" />
+    <Compile Include="Assets\Scripts\DualBubbleAction.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\PauseManager.cs" />
     <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-Glossy.shader" />

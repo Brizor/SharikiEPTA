@@ -8,6 +8,7 @@ public class BubbleManager : MonoBehaviour {
     [SerializeField] GameObject prefabBubble;
     [SerializeField] GameObject badBubblePrefab;
     [SerializeField] GameObject shellPrefab;
+    [SerializeField] GameObject dualPref;
     [SerializeField] GameManager gameManager;
     [SerializeField] Text textOfMode;
     [SerializeField] GamePlay gamePlay;
@@ -23,6 +24,7 @@ public class BubbleManager : MonoBehaviour {
     private int mode;
     public int countOfBubble;
     public int typesOfBubbles;
+    
 
   
       private int[] cutMas(int[] Mas, int avoid)
@@ -83,13 +85,20 @@ public class BubbleManager : MonoBehaviour {
                 newBubble.GetComponent<actionWithShell>().gameManager = this.gameManager;
                 range--;
             }
+            if(what == 3)
+            {
+                newBubble = Instantiate(dualPref, positions[MasOfVar[were]].position, transform.rotation);
+                MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
+                newBubble.GetComponent<DualBubbleAction>().gameManager = this.gameManager;
+                range--;
+            }
          }
       }
 
        void Start() {
            mode = 1;
         
-        modeUp(mode);
+        upComplexity(mode);
         /*countOfBubble = 3;
         intToModeUp = 5;
         typesOfBubbles = 2;
@@ -113,47 +122,74 @@ public class BubbleManager : MonoBehaviour {
            positions[7] = new Vector3(2.15f, -6f, 0f);*/
        }
 
-       private void modeUp(int wave)
+       private void upComplexity(int complexity)
        {
-         if(wave == 3)
+         if(complexity == 7)
          {
+            gameManager.upComplexity();
             countOfBubble++;
          }
-        if (wave == 5)
+        if (complexity == 14)
         {
+            gameManager.upComplexity();
             typesOfBubbles++;
         }
-        if (wave == 7)
+        if (complexity == 21)
         {
+            gameManager.upComplexity();
             countOfBubble++;
+            minCountOfBables++;
         }
-        if (wave == 11)
+        if (complexity == 28)
         {
+            gameManager.upComplexity();
             countOfBubble++;
         }
 
-        if (wave == 15)
+        if (complexity == 35)
         {
+            gameManager.upComplexity();
+            countOfBubble++;
+            typesOfBubbles++;
+        }
+
+        if(complexity == 42)
+        {
+            gameManager.upComplexity();
             countOfBubble++;
         }
 
-        if (wave <= 5)
+        if(complexity == 49)
+        {
+            gameManager.upComplexity();
+            countOfBubble++;
+        }
+
+        if(complexity == 56)
+        {
+            gameManager.upComplexity();
+            minCountOfBables++;
+        }
+
+        /*if (complexity <= 5)
          {
-           textOfMode.text = modes[0] + wave;
+           textOfMode.text = modes[0] + complexity;
            textOfMode.color = new Color(0,186,255);
          }
-         if(wave > 5 && wave <= 10)
+         if(complexity > 5 && complexity <= 10)
          {
-            textOfMode.text = modes[1] + (wave - 5);
+            textOfMode.text = modes[1] + (complexity - 5);
             textOfMode.color = new Color(255, 233, 0);
          }
-         if (wave > 10)
+         if (complexity > 10)
          {
 
-            textOfMode.text = modes[2] + (wave - 10);
+            textOfMode.text = modes[2] + (complexity - 10);
             textOfMode.color = new Color(255, 0, 28);
          }
-         textOfMode.GetComponent<Animation>().Play();
+         textOfMode.GetComponent<Animation>().Play();*/
+
+        gameManager.complexity++;
        }
 
        void Update() {
@@ -161,18 +197,19 @@ public class BubbleManager : MonoBehaviour {
           if (intervalToCreateBubble <= 0)
           {
             
-            intToModeUp--;
+            //intToModeUp--;
             intervalToCreateBubble = gameManager.interval;
+            upComplexity(gameManager.complexity);
 
             howMuch = Random.Range(minCountOfBables, countOfBubble);
             createBubble(howMuch);
 
-            if(intToModeUp <= 0)
+            /*if(intToModeUp <= 0)
             {
                 mode++;
                 intToModeUp = 5;
-                modeUp(mode);
-            }
+                upComplexity(mode);
+            }*/
           }
        } 
     } 

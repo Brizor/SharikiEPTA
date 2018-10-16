@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField]  GameObject anim1;
     [SerializeField] GamePlay gamePlay;
 
+    public int complexity;
     public float speed;
     public float maxSpeed;
     public float minInterval;
     public float interval;
-    public float timeInterval;//интервал до повышения сложности
+    public float intToIncreaseComplexety;//интервал до повышения сложности
     public float coefOfComplexity;
 
     private float health;
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour {
 
     public void bubbleCollision(int type)
     {
-        if(type == typeOfLine || type == 2)
+        if(type == typeOfLine || type == 2 || type == 3)
         {
             badReaction();
         }
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    private void upComplexity()
+    public void upComplexity()
     {
         if(speed < maxSpeed)
         {
@@ -129,17 +130,13 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         health = 8;
         score = 0;
-        /* speed = 2;
-         minInterval = 3.9f;
-         timeInterval = 5;
-         interval = 5;
-         maxSpeed = 3f;
-         coefOfComplexity = 0.05f;*/
+        complexity = 0;
+
         speed = gamePlay.speed;
         maxSpeed = gamePlay.maxSpeed;
         minInterval = gamePlay.minInterval;
         interval = gamePlay.interval;
-        timeInterval = gamePlay.timeInterval;
+        intToIncreaseComplexety = gamePlay.timeInterval;
         coefOfComplexity = gamePlay.coefOfComplexity;
 
         gameOver = false;
@@ -148,14 +145,15 @@ public class GameManager : MonoBehaviour {
         healthText.text = "HEALTH: " + health.ToString();
         scoreText.text = "SCORE: " + score.ToString();
 
-        startTime = Time.time;
+        //startTime = Time.time;
 	}
 
 	void Update () {
-        if(Time.time - startTime >= timeInterval)
+        /*if(Time.time - startTime >= intToIncreaseComplexety)
         {
+            
             startTime = Time.time;
             upComplexity();
-        }
+        }*/
 	}
 }

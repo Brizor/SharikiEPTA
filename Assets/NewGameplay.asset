@@ -14,9 +14,9 @@ MonoBehaviour:
   speed: 2
   maxSpeed: 2.55
   minInterval: 3.9
-  interval: 5.5
+  interval: 6
   timeInterval: 5
-  coefOfComplexity: 0.035
+  coefOfComplexity: 0.068
   countOfBubble: 3
   intToModeUp: 5
   typesOfBubbles: 2
