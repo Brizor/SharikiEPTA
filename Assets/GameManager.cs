@@ -8,32 +8,25 @@ public class GameManager : MonoBehaviour {
     [SerializeField] AudioClip badClip;
     [SerializeField] AudioClip shellClip;
     [SerializeField] AudioClip gameOverClip;
-    [SerializeField] private Text healthText;
-    [SerializeField] private Text scoreText;
+
     [SerializeField] GameObject MainCam;
     [SerializeField]  GameObject Line;
-   // [SerializeField] GamePlay gamePlay;
     [SerializeField] SpriteRenderer valik;
     [SerializeField] BubbleManager bubbleManager;
 
-    public int complexity;
+    [SerializeField] private Text healthText;
+    [SerializeField] private Text scoreText;
+
+    [SerializeField] GamePlay gamePlay;
+
     public float speed;
-    public float maxSpeed;
-    public float minInterval;
     public float interval;
-    public float intToIncreaseComplexety;//интервал до повышения сложности
-    public float coefOfComplexity;
+    public int tapsToCreate;
 
     public float health;
-
     private int score;
     private float startTime;
     public int typeOfLine;
-    private bool gameOver;
-
-    private GamePlay gamePlay;
-
-    public int tapsToCreate;
 
     private void soundActive(AudioClip saund)
     {
@@ -50,12 +43,6 @@ public class GameManager : MonoBehaviour {
 
     public void badReaction()
     {
-        //soundActive(badClip);
-
-       /* PauseManager pause = GetComponent<PauseManager>();
-        pause.gameOver(score);*/
-      
-        
         if(health > 0 )
         {
             health--;
@@ -72,7 +59,6 @@ public class GameManager : MonoBehaviour {
                 pause.gameOver(score);
                 startParam();
             }
-            //healthText.text = "HEALTH: " + health.ToString();
         }
     }
 
@@ -106,51 +92,50 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    /*public void upComplexity()
-    {
-        if(speed < maxSpeed)
-        {
-            speed += coefOfComplexity;
-        }
- 
-        if(interval > minInterval)
-        {
-            interval -= coefOfComplexity;
-        }
-    }*/
-
     public void controlerOfMods()
     {
         int mod = Random.Range(0, 3);
         if(mod == 0)
         {
-            speed = 2.5f;
+          /*speed = 2.5f;
             bubbleManager.typesOfBubbles = 2;
-            bubbleManager.countOfBubble = 4;
-            bubbleManager.minCountOfBables = 1;
-            
+            bubbleManager.minCountOfBubble = 1;
+            bubbleManager.maxCountOfBables = 4;*/
+            //easy mod
+            speed = gamePlay.speedEasy;
+            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesEasy;
+            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
+            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesEasy;
         }
         if(mod == 1)
         {
-            speed = 2.5f;
+          /*speed = 2.5f;
             bubbleManager.typesOfBubbles = 3;
-            bubbleManager.countOfBubble = 5;
-            bubbleManager.minCountOfBables = 3;
+            bubbleManager.minCountOfBubble = 3;
+            bubbleManager.maxCountOfBables = 5;*/
+            //normal mod
+            speed = gamePlay.speedNormal;
+            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesNormal;
+            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleNormal;
+            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesNormal;
         }
         if(mod == 2)
         {
-            speed = 2.3f;
+          /*speed = 2.3f;
             bubbleManager.typesOfBubbles = 4;
-            bubbleManager.countOfBubble = 6;
             bubbleManager.minCountOfBables = 3;
+            bubbleManager.maxCountOfBubble = 6;*/
+            //toby pizda mod
+            speed = gamePlay.speedHard;
+            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesHard;
+            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesHard;
+            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleHard;
         }
     }
 
-    
-
     public void changeColor()
     {
-         int rnd = Random.Range(0, 2);
+        int rnd = Random.Range(0, 2);
         if (typeOfLine == rnd)
         {
             return;
@@ -174,62 +159,45 @@ public class GameManager : MonoBehaviour {
 
     private void startParam()
     {
-        health = 3;
         score = 0;
-        tapsToCreate = 0;
         scoreText.text = score.ToString();
-
-       // complexity = 0;
-        speed = 2.5f;
-        bubbleManager.typesOfBubbles = 2;
-        bubbleManager.countOfBubble = 4;
-        bubbleManager.minCountOfBables = 1;
-
-        //speed = gamePlay.speed;
-       // maxSpeed = gamePlay.maxSpeed;
-       // minInterval = gamePlay.minInterval;
-        interval = 40f;
-        //intToIncreaseComplexety = gamePlay.timeInterval;
-        //coefOfComplexity = gamePlay.coefOfComplexity;
+        tapsToCreate = 0;
         startTime = Time.time;
 
+        /*health = 3;
+        speed = 2.5f;
+        bubbleManager.typesOfBubbles = 2;
+        bubbleManager.maxCountOfBubble = 4;
+        bubbleManager.minCountOfBables = 1;
+        interval = 40f;*/
+
+        health = gamePlay.health;
+        speed = gamePlay.speedEasy;
+        interval = gamePlay.interval;
+        bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesEasy;
+        bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
+        bubbleManager.minCountOfBables = gamePlay.minCountOfBablesEasy;
 
         typeOfLine = 0;
         MainCam.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
         Line.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
-
     }
 
     void Start () {
-        
-        gamePlay = ScriptableObject.CreateInstance<GamePlay>();
         Screen.orientation = ScreenOrientation.Portrait;
-        //Time.timeScale = 1;
-        health = 3;
         score = 0;
-        tapsToCreate = 0;
-        speed = 2.5f;
-       
-
-        
-
-        //complexity = 0;
-
-        //speed = gamePlay.speed;
-        //maxSpeed = gamePlay.maxSpeed;
-        //minInterval = gamePlay.minInterval;
-        interval = 40f;
-        //intToIncreaseComplexety = gamePlay.timeInterval;
-       // coefOfComplexity = gamePlay.coefOfComplexity;
-
-       // gameOver = false;
-
-        typeOfLine = 0;
-        //healthText.text = "HEALTH: " + health.ToString();
         scoreText.text = score.ToString();
-
+        tapsToCreate = 0;
+        typeOfLine = 0;
         startTime = Time.time;
-        Destroy(gamePlay);
+
+        /*health = 3;
+        speed = 2.5f;
+        interval = 40f;*/
+
+        health = gamePlay.health;
+        speed = gamePlay.speedEasy;
+        interval = gamePlay.interval;
 	}
 
 	void Update () {

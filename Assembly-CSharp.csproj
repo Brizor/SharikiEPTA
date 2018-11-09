@@ -63,13 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Scripts\ActionsWithBubbles.cs" />
-    <Compile Include="Assets\Scripts\ActionWithButtomLine.cs" />
     <Compile Include="Assets\Scripts\actionWithShell.cs" />
     <Compile Include="Assets\Scripts\ActionWithUpLine.cs" />
     <Compile Include="Assets\Scripts\BlotManager.cs" />
     <Compile Include="Assets\Scripts\BubbleManager.cs" />
     <Compile Include="Assets\Scripts\BubbleMove.cs" />
-    <Compile Include="Assets\Scripts\Conveyor.cs" />
     <Compile Include="Assets\Scripts\DualBubbleAction.cs" />
     <Compile Include="Assets\Scripts\GamePlayPar.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />

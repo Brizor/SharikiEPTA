@@ -17,7 +17,6 @@ public class DualBubbleAction : MonoBehaviour {
             gameManager.bubbleCollision(type);
             Destroy(this.gameObject);
         }
-
     }
 
     private void OnMouseUp()
@@ -37,11 +36,9 @@ public class DualBubbleAction : MonoBehaviour {
                 newBubble2.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
                 newBubble2.GetComponent<ActionsWithBubbles>().type = 1;
 
-            
             gameManager.shellReaction();
             Destroy(this.gameObject);
         }
-
     }
 
     void Start()

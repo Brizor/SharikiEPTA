@@ -11,7 +11,7 @@ public class BubbleManager : MonoBehaviour {
     [SerializeField] GameObject dualPref;
     [SerializeField] GameManager gameManager;
     [SerializeField] Text textOfMode;
-    //[SerializeField] GamePlay gamePlay;
+    [SerializeField] GamePlay gamePlay;
     private GameObject newBubble;
  
     public Transform[] positions = new Transform[12];
@@ -19,38 +19,32 @@ public class BubbleManager : MonoBehaviour {
 
     public int minCountOfBables;
     private int howMuch;
-    private float intervalToCreateBubble;
     public int intToModeUp;
-    //private int mode;
-    public int countOfBubble;
+    public int maxCountOfBubble;
     public int typesOfBubbles;
-
-    private GamePlay gamePlay;
     
+    private int[] cutMas(int[] Mas, int avoid)
+    {
+       int[] MasOfVar = new int[Mas.Length - 1];
+       int j = 0;
 
-  
-      private int[] cutMas(int[] Mas, int avoid)
-      {
-         int[] MasOfVar = new int[Mas.Length - 1];
-         int j = 0;
-
-          for(int i = 0; i < Mas.Length; i++)
-          {
-             if(Mas[i] != avoid)
-             {
-                MasOfVar[j] = Mas[i];
-                j++;
-             }
-          }
-         return MasOfVar;
-      }
+        for(int i = 0; i < Mas.Length; i++)
+        {
+           if(Mas[i] != avoid)
+           {
+              MasOfVar[j] = Mas[i];
+              j++;
+           }
+        }
+       return MasOfVar;
+    }
 
       private void createBubble(int quantity)
       {
         int were;
         int what;
-        int range = 12;
-         int[] MasOfVar = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+        int range = 11;
+        int[] MasOfVar = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
          for(int i = 0; i < quantity;i++)
          {
@@ -96,136 +90,36 @@ public class BubbleManager : MonoBehaviour {
             }
          }
         gameManager.changeColor();
-    }
+      }
 
       private void startParam()
       {
-        typesOfBubbles = 2;
-        countOfBubble = 4;
-        minCountOfBables = 1;
-        //mode = 1;
-        // countOfBubble = gamePlay.countOfBubble;
-        //intToModeUp = gamePlay.intToModeUp;
-        // typesOfBubbles = gamePlay.typesOfBubbles;
-        //minCountOfBables = gamePlay.minCountOfBables;
-        // Destroy(gamePlay);
+       /* typesOfBubbles = 2;
+        minCountOfBubble = 1;
+        maxCountOfBables = 4;*/
 
-        //intervalToCreateBubble = gameManager.interval;
-    }
-
-       void Start() {
-
-        typesOfBubbles = 2;
-        countOfBubble = 4;
-        minCountOfBables = 1;
-
-        //gamePlay = ScriptableObject.CreateInstance<GamePlay>();
-        //  mode = 1;
-
-        /*countOfBubble = 3;
-        intToModeUp = 5;
-        typesOfBubbles = 2;
-        minCountOfBables = 1;*/
-
-        // countOfBubble = gamePlay.countOfBubble;
-        //intToModeUp = gamePlay.intToModeUp;
-        // typesOfBubbles = gamePlay.typesOfBubbles;
-        // minCountOfBables = gamePlay.minCountOfBables;
-        //Destroy(gamePlay);
-
-        // intervalToCreateBubble = gameManager.interval;
-    }
-
-    /* private void upComplexity(int complexity)
-     {
-       if(complexity == 7)
-       {
-          gameManager.upComplexity();
-          countOfBubble++;
-       }
-      if (complexity == 14)
-      {
-          gameManager.upComplexity();
-          typesOfBubbles++;
-      }
-      if (complexity == 21)
-      {
-          gameManager.upComplexity();
-          countOfBubble++;
-          minCountOfBables++;
-      }
-      if (complexity == 28)
-      {
-          gameManager.upComplexity();
-          countOfBubble++;
+        typesOfBubbles = gamePlay.typesOfBubblesEasy;
+        maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
+        minCountOfBables = gamePlay.minCountOfBablesEasy;
       }
 
-      if (complexity == 35)
-      {
-          gameManager.upComplexity();
-          countOfBubble++;
-          typesOfBubbles++;
-      }
+     void Start(){
+        /*typesOfBubbles = 2;
+        minCountOfBubble = 1;
+        maxCountOfBables = 4;*/
 
-      if(complexity == 42)
-      {
-          gameManager.upComplexity();
-          countOfBubble++;
-      }
-
-      if(complexity == 49)
-      {
-          gameManager.upComplexity();
-          countOfBubble++;
-      }
-
-      if(complexity == 56)
-      {
-          gameManager.upComplexity();
-          minCountOfBables++;
-      }
-
-      /*if (complexity <= 5)
-       {
-         textOfMode.text = modes[0] + complexity;
-         textOfMode.color = new Color(0,186,255);
-       }
-       if(complexity > 5 && complexity <= 10)
-       {
-          textOfMode.text = modes[1] + (complexity - 5);
-          textOfMode.color = new Color(255, 233, 0);
-       }
-       if (complexity > 10)
-       {
-
-          textOfMode.text = modes[2] + (complexity - 10);
-          textOfMode.color = new Color(255, 0, 28);
-       }
-       textOfMode.GetComponent<Animation>().Play();
-
-      gameManager.complexity++;
-     }*/
+        typesOfBubbles = gamePlay.typesOfBubblesEasy;
+        maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
+        minCountOfBables = gamePlay.minCountOfBablesEasy;
+     }
 
     void Update() {
-         //aaa intervalToCreateBubble -= Time.deltaTime;
-          if (/*intervalToCreateBubble <= 0*/ gameManager.tapsToCreate <= 0 && Time.timeScale != 0)
-          {
-            
-            //intToModeUp--;
-            //intervalToCreateBubble = gameManager.interval;
-            //upComplexity(gameManager.complexity);
+       if (gameManager.tapsToCreate <= 0 && Time.timeScale != 0)
+       {
+         howMuch = Random.Range(minCountOfBables, maxCountOfBubble);
+         gameManager.tapsToCreate = howMuch;
 
-            howMuch = Random.Range(minCountOfBables, countOfBubble);
-            gameManager.tapsToCreate = howMuch;
-            //передавать количество в гм и там тректь уничтожение, когда все уничтожены создавать новую волну
-            createBubble(howMuch);
-
-            /*if(intToModeUp <= 0)
-            {
-                mode++;
-                intToModeUp = 5;
-                upComplexity(mode);
-            }*/
-          }
-       } 
+         createBubble(howMuch);
+       }
     } 
+} 

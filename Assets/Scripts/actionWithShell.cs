@@ -17,7 +17,6 @@ public class actionWithShell : MonoBehaviour {
             gameManager.bubbleCollision(type);
             Destroy(this.gameObject);
         }
-
     }
 
     private void OnMouseUp()
@@ -33,7 +32,6 @@ public class actionWithShell : MonoBehaviour {
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().type = 0;
-
             }
             if (what == 1)
             {
@@ -42,12 +40,10 @@ public class actionWithShell : MonoBehaviour {
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().type = 1;
-
             }
             gameManager.shellReaction();
             Destroy(this.gameObject);
         }
-
     }
 
     void Start()

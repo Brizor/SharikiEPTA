@@ -8,6 +8,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca05429e29f523f44b542a02c508546c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: NewGameplay
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay
+  health: 3
+  interval: 40
+  speedEasy: 2.5
+  minCountOfBablesEasy: 1
+  maxCountOfBubbleEasy: 4
+  typesOfBubblesEasy: 2
+  speedNormal: 2.5
+  minCountOfBablesNormal: 3
+  maxCountOfBubbleNormal: 5
+  typesOfBubblesNormal: 3
+  speedHard: 2.3
+  minCountOfBablesHard: 4
+  maxCountOfBubbleHard: 6
+  typesOfBubblesHard: 4
