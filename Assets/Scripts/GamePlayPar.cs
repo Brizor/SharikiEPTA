@@ -22,8 +22,4 @@ public class GamePlay : ScriptableObject {
     public int minCountOfBablesHard;
     public int maxCountOfBubbleHard;
     public int typesOfBubblesHard;
-
-
-
-
 }

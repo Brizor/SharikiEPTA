@@ -19,7 +19,6 @@ public class BubbleManager : MonoBehaviour {
 
     public int minCountOfBables;
     private int howMuch;
-    public int intToModeUp;
     public int maxCountOfBubble;
     public int typesOfBubbles;
     
@@ -98,9 +97,9 @@ public class BubbleManager : MonoBehaviour {
         minCountOfBubble = 1;
         maxCountOfBables = 4;*/
 
-        typesOfBubbles = gamePlay.typesOfBubblesEasy;
-        maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
-        minCountOfBables = gamePlay.minCountOfBablesEasy;
+        typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
+        maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
+        minCountOfBables = GamePlayParam.minCountOfBablesEasy;
       }
 
      void Start(){
@@ -108,9 +107,9 @@ public class BubbleManager : MonoBehaviour {
         minCountOfBubble = 1;
         maxCountOfBables = 4;*/
 
-        typesOfBubbles = gamePlay.typesOfBubblesEasy;
-        maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
-        minCountOfBables = gamePlay.minCountOfBablesEasy;
+        typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
+        maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
+        minCountOfBables = GamePlayParam.minCountOfBablesEasy;
      }
 
     void Update() {

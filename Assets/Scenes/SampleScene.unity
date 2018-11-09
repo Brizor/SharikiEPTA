@@ -1646,7 +1646,6 @@ MonoBehaviour:
   - {fileID: 54809946}
   - {fileID: 152489015}
   minCountOfBables: 0
-  intToModeUp: 0
   maxCountOfBubble: 0
   typesOfBubbles: 0
 --- !u!1 &1367383637

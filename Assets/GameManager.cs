@@ -102,10 +102,11 @@ public class GameManager : MonoBehaviour {
             bubbleManager.minCountOfBubble = 1;
             bubbleManager.maxCountOfBables = 4;*/
             //easy mod
-            speed = gamePlay.speedEasy;
-            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesEasy;
-            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
-            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesEasy;
+            speed = GamePlayParam.speedEasy;
+            bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
+            bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
+            bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesEasy;
+            
         }
         if(mod == 1)
         {
@@ -114,10 +115,10 @@ public class GameManager : MonoBehaviour {
             bubbleManager.minCountOfBubble = 3;
             bubbleManager.maxCountOfBables = 5;*/
             //normal mod
-            speed = gamePlay.speedNormal;
-            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesNormal;
-            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleNormal;
-            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesNormal;
+            speed = GamePlayParam.speedNormal;
+            bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesNormal;
+            bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleNormal;
+            bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesNormal;
         }
         if(mod == 2)
         {
@@ -126,10 +127,10 @@ public class GameManager : MonoBehaviour {
             bubbleManager.minCountOfBables = 3;
             bubbleManager.maxCountOfBubble = 6;*/
             //toby pizda mod
-            speed = gamePlay.speedHard;
-            bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesHard;
-            bubbleManager.minCountOfBables = gamePlay.minCountOfBablesHard;
-            bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleHard;
+            speed = GamePlayParam.speedHard;
+            bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesHard;
+            bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesHard;
+            bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleHard;
         }
     }
 
@@ -171,12 +172,12 @@ public class GameManager : MonoBehaviour {
         bubbleManager.minCountOfBables = 1;
         interval = 40f;*/
 
-        health = gamePlay.health;
-        speed = gamePlay.speedEasy;
-        interval = gamePlay.interval;
-        bubbleManager.typesOfBubbles = gamePlay.typesOfBubblesEasy;
-        bubbleManager.maxCountOfBubble = gamePlay.maxCountOfBubbleEasy;
-        bubbleManager.minCountOfBables = gamePlay.minCountOfBablesEasy;
+        health = GamePlayParam.health;
+        speed = GamePlayParam.speedEasy;
+        interval = GamePlayParam.interval;
+        bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
+        bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
+        bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesEasy;
 
         typeOfLine = 0;
         MainCam.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
@@ -195,9 +196,9 @@ public class GameManager : MonoBehaviour {
         speed = 2.5f;
         interval = 40f;*/
 
-        health = gamePlay.health;
-        speed = gamePlay.speedEasy;
-        interval = gamePlay.interval;
+        health = GamePlayParam.health;
+        speed = GamePlayParam.speedEasy;
+        interval = GamePlayParam.interval;
 	}
 
 	void Update () {
