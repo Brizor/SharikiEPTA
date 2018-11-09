@@ -8,16 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ca05429e29f523f44b542a02c508546c, type: 3}
   m_Name: NewGameplay
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay
-  speed: 2
-  maxSpeed: 2.55
-  minInterval: 3.9
-  interval: 6
-  timeInterval: 5
-  coefOfComplexity: 0.068
-  countOfBubble: 3
-  intToModeUp: 5
-  typesOfBubbles: 2
-  minCountOfBables: 1

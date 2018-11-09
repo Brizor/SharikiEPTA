@@ -8,12 +8,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] AudioClip badClip;
     [SerializeField] AudioClip shellClip;
     [SerializeField] AudioClip gameOverClip;
-    [SerializeField] GameObject panel;
-    [SerializeField] GameObject badReactionAnim;
     [SerializeField] private Text healthText;
     [SerializeField] private Text scoreText;
-    [SerializeField]  GameObject anim1;
-    [SerializeField] GamePlay gamePlay;
+    [SerializeField] GameObject MainCam;
+    [SerializeField]  GameObject Line;
+   // [SerializeField] GamePlay gamePlay;
+    [SerializeField] SpriteRenderer valik;
+    [SerializeField] BubbleManager bubbleManager;
 
     public int complexity;
     public float speed;
@@ -23,12 +24,16 @@ public class GameManager : MonoBehaviour {
     public float intToIncreaseComplexety;//интервал до повышения сложности
     public float coefOfComplexity;
 
-    private float health;
+    public float health;
 
     private int score;
     private float startTime;
     public int typeOfLine;
     private bool gameOver;
+
+    private GamePlay gamePlay;
+
+    public int tapsToCreate;
 
     private void soundActive(AudioClip saund)
     {
@@ -39,13 +44,19 @@ public class GameManager : MonoBehaviour {
     public void goodReaction()
     {
         score++;
-        scoreText.text = "SCORE: " + score.ToString();
+        scoreText.text =  score.ToString();
         soundActive(goodClip);
     }
 
     public void badReaction()
     {
-        if (health > 0 )
+        //soundActive(badClip);
+
+       /* PauseManager pause = GetComponent<PauseManager>();
+        pause.gameOver(score);*/
+      
+        
+        if(health > 0 )
         {
             health--;
             if (health >= 1)
@@ -54,14 +65,14 @@ public class GameManager : MonoBehaviour {
 
             }
 
-            if (health <= 0 && !gameOver)
+            if (health <= 0)
             {
-                soundActive(gameOverClip);
-                gameOver = true;
+                
                 PauseManager pause = GetComponent<PauseManager>();
                 pause.gameOver(score);
+                startParam();
             }
-            healthText.text = "HEALTH: " + health.ToString();
+            //healthText.text = "HEALTH: " + health.ToString();
         }
     }
 
@@ -72,7 +83,7 @@ public class GameManager : MonoBehaviour {
 
     public void destroyBubbleReaction(int type)
     { 
-            if (type != typeOfLine)
+            if (type == typeOfLine)
             {
                 badReaction();
             }
@@ -84,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
     public void bubbleCollision(int type)
     {
-        if(type == typeOfLine || type == 2 || type == 3)
+        if(type != typeOfLine || type == 2 || type == 3)
         {
             badReaction();
         }
@@ -95,7 +106,7 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    public void upComplexity()
+    /*public void upComplexity()
     {
         if(speed < maxSpeed)
         {
@@ -105,6 +116,33 @@ public class GameManager : MonoBehaviour {
         if(interval > minInterval)
         {
             interval -= coefOfComplexity;
+        }
+    }*/
+
+    public void controlerOfMods()
+    {
+        int mod = Random.Range(0, 3);
+        if(mod == 0)
+        {
+            speed = 2.5f;
+            bubbleManager.typesOfBubbles = 2;
+            bubbleManager.countOfBubble = 4;
+            bubbleManager.minCountOfBables = 1;
+            
+        }
+        if(mod == 1)
+        {
+            speed = 2.5f;
+            bubbleManager.typesOfBubbles = 3;
+            bubbleManager.countOfBubble = 5;
+            bubbleManager.minCountOfBables = 3;
+        }
+        if(mod == 2)
+        {
+            speed = 2.3f;
+            bubbleManager.typesOfBubbles = 4;
+            bubbleManager.countOfBubble = 6;
+            bubbleManager.minCountOfBables = 3;
         }
     }
 
@@ -121,39 +159,84 @@ public class GameManager : MonoBehaviour {
         {
             typeOfLine = rnd;
 
-            anim1.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
+            MainCam.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
+            Line.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
+            if (typeOfLine == 0)
+            {
+                valik.color = Color.blue;
+            }
+            else
+            {
+                valik.color = Color.red;
+            }
         }
     }
 
-	void Start () {
-        Screen.orientation = ScreenOrientation.Portrait;
-        Time.timeScale = 1;
-        health = 8;
+    private void startParam()
+    {
+        health = 3;
         score = 0;
-        complexity = 0;
+        tapsToCreate = 0;
+        scoreText.text = score.ToString();
 
-        speed = gamePlay.speed;
-        maxSpeed = gamePlay.maxSpeed;
-        minInterval = gamePlay.minInterval;
-        interval = gamePlay.interval;
-        intToIncreaseComplexety = gamePlay.timeInterval;
-        coefOfComplexity = gamePlay.coefOfComplexity;
+       // complexity = 0;
+        speed = 2.5f;
+        bubbleManager.typesOfBubbles = 2;
+        bubbleManager.countOfBubble = 4;
+        bubbleManager.minCountOfBables = 1;
 
-        gameOver = false;
+        //speed = gamePlay.speed;
+       // maxSpeed = gamePlay.maxSpeed;
+       // minInterval = gamePlay.minInterval;
+        interval = 40f;
+        //intToIncreaseComplexety = gamePlay.timeInterval;
+        //coefOfComplexity = gamePlay.coefOfComplexity;
+        startTime = Time.time;
+
 
         typeOfLine = 0;
-        healthText.text = "HEALTH: " + health.ToString();
-        scoreText.text = "SCORE: " + score.ToString();
+        MainCam.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
+        Line.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
 
-        //startTime = Time.time;
+    }
+
+    void Start () {
+        
+        gamePlay = ScriptableObject.CreateInstance<GamePlay>();
+        Screen.orientation = ScreenOrientation.Portrait;
+        //Time.timeScale = 1;
+        health = 3;
+        score = 0;
+        tapsToCreate = 0;
+        speed = 2.5f;
+       
+
+        
+
+        //complexity = 0;
+
+        //speed = gamePlay.speed;
+        //maxSpeed = gamePlay.maxSpeed;
+        //minInterval = gamePlay.minInterval;
+        interval = 40f;
+        //intToIncreaseComplexety = gamePlay.timeInterval;
+       // coefOfComplexity = gamePlay.coefOfComplexity;
+
+       // gameOver = false;
+
+        typeOfLine = 0;
+        //healthText.text = "HEALTH: " + health.ToString();
+        scoreText.text = score.ToString();
+
+        startTime = Time.time;
+        Destroy(gamePlay);
 	}
 
 	void Update () {
-        /*if(Time.time - startTime >= intToIncreaseComplexety)
+        if(Time.time - startTime >= interval)
         {
-            
             startTime = Time.time;
-            upComplexity();
-        }*/
+            controlerOfMods();
+        }
 	}
 }

@@ -22,6 +22,7 @@ public class actionWithShell : MonoBehaviour {
 
     private void OnMouseUp()
     {
+        gameManager.tapsToCreate--;
         GameObject newBubble = null;
         if (Time.timeScale != 0)
         {
@@ -51,12 +52,17 @@ public class actionWithShell : MonoBehaviour {
 
     void Start()
     {
+        gameManager.tapsToCreate++;
         speed = gameManager.speed;
         type = 2;
     }
 
     void Update()
     {
-        transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+        if (Time.timeScale == 0)
+        {
+            Destroy(this.gameObject);
+        }
+        transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
     }
 }

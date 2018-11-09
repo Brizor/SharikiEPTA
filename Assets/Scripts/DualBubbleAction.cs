@@ -13,6 +13,7 @@ public class DualBubbleAction : MonoBehaviour {
     {
         if (collision.tag == "UpLine")
         {
+            gameManager.tapsToCreate--;
             gameManager.bubbleCollision(type);
             Destroy(this.gameObject);
         }
@@ -21,6 +22,7 @@ public class DualBubbleAction : MonoBehaviour {
 
     private void OnMouseUp()
     {
+        gameManager.tapsToCreate--;
         GameObject newBubble = null;
         GameObject newBubble2 = null;
         if (Time.timeScale != 0)
@@ -44,12 +46,17 @@ public class DualBubbleAction : MonoBehaviour {
 
     void Start()
     {
+        gameManager.tapsToCreate += 2;
         speed = gameManager.speed;
         type = 3;
     }
 
     void Update()
     {
-        transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+        if (Time.timeScale == 0)
+        {
+            Destroy(this.gameObject);
+        }
+        transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
     }
 }
