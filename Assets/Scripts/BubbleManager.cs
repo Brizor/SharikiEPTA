@@ -117,7 +117,6 @@ public class BubbleManager : MonoBehaviour {
        {
          howMuch = Random.Range(minCountOfBables, maxCountOfBubble);
          gameManager.tapsToCreate = howMuch;
-
          createBubble(howMuch);
        }
     } 
