@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\GamePlayPar.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\PauseManager.cs" />
+    <Compile Include="Assets\Sprites\ParticleScript.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Tutorials/ConceptBubbles/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

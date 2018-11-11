@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActionsWithBubbles : MonoBehaviour {
     [SerializeField] GameObject blot;
     public GameManager gameManager;
+    [SerializeField] GameObject particleEfect;
+    private Color color;
 
     public int type;
 
@@ -15,19 +17,16 @@ public class ActionsWithBubbles : MonoBehaviour {
             gameManager.tapsToCreate--;//new
             gameManager.bubbleCollision(type);
             Destroy(this.gameObject);
+            var main = Instantiate(particleEfect, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<ParticleSystem>().main;
+            main.startColor = color;
         }
     }
 
     private void blotsCreate()
     {
-        if (type == 0)
-        {
-            Instantiate(blot, new Vector3 (transform.position.x,transform.position.y, 3f), transform.rotation).GetComponent<SpriteRenderer>().color = new Color(0.3960784f, 0.7843725f, 0.9921569f);
-        }
-        else if (type == 1)
-        {
-            Instantiate(blot, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<SpriteRenderer>().color = new Color(1, 0.3726415f, 0.3726415f);
-        }
+        Instantiate(blot, new Vector3 (transform.position.x,transform.position.y, 3f), transform.rotation).GetComponent<SpriteRenderer>().color = color;
+        var main = Instantiate(particleEfect, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<ParticleSystem>().main;
+        main.startColor = color;
     }
 
     private void OnMouseUp()
@@ -43,6 +42,14 @@ public class ActionsWithBubbles : MonoBehaviour {
 
     void Start()
     {
+        if (type == 0)
+        {
+            color = new Color(0.3960784f, 0.7843725f, 0.9921569f);
+        }
+        else if (type == 1)
+        {
+            color = new Color(1, 0.3726415f, 0.3726415f);
+        }
     }
 
     private void Update()

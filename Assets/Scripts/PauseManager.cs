@@ -35,7 +35,6 @@ public class PauseManager : MonoBehaviour {
     }
 
     void Start () {
-
         modeText.SetActive(false);
         Time.timeScale = 0;
         bestScore = PlayerPrefs.GetInt("FirstPlace");

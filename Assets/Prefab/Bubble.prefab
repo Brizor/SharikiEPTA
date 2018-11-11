@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013756132892926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.72584414, y: -2.504164, z: 0}
+  m_LocalPosition: {x: -0.37438238, y: -1.6945214, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4770973305742120}
@@ -363,6 +363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blot: {fileID: 1195315385732190, guid: aa69ba8851c2f684ca384a60a299dd99, type: 2}
   gameManager: {fileID: 0}
+  particleEfect: {fileID: 1601974227379200, guid: 1d0b64d35eee67c45b212ddd88045954,
+    type: 2}
   type: 0
 --- !u!212 &212763528168312700
 SpriteRenderer:
