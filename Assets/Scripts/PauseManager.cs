@@ -9,7 +9,7 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] Text bestScoreText;
     [SerializeField] GameObject scoreText;
     [SerializeField] GameObject scorePanel;
-    [SerializeField] Text modeText;
+    [SerializeField] GameObject modeText;
 
     private int bestScore;
 
@@ -17,12 +17,14 @@ public class PauseManager : MonoBehaviour {
     {
         scorePanel.SetActive(false);
         pausePanel.SetActive(true);
+        modeText.SetActive(false);
 
         Time.timeScale = 0;
         if(bestScore < score)
         {
-            bestScoreText.text = "New Best " + bestScore.ToString();
+            bestScore = score;
             PlayerPrefs.SetInt("FirstPlace", bestScore);
+            bestScoreText.text = "New Best " + bestScore.ToString();
         }
         else
         {
@@ -33,6 +35,8 @@ public class PauseManager : MonoBehaviour {
     }
 
     void Start () {
+
+        modeText.SetActive(false);
         Time.timeScale = 0;
         bestScore = PlayerPrefs.GetInt("FirstPlace");
         bestScoreText.text = "Best " + bestScore.ToString();
@@ -41,6 +45,7 @@ public class PauseManager : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            modeText.SetActive(true);
             scorePanel.SetActive(true);
             Time.timeScale = 1;
             pausePanel.SetActive(false);

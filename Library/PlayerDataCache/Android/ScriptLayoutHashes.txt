@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Alex/Desktop/Билды/Апэкашки/firstPr_33.apk
+C:/Users/Alex/Desktop/Билды/Апэкашки/firstPr_36.apk
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
@@ -123,12 +123,12 @@ e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSyste
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-6de295d9b867b73d9346c2b2ad431fc2 Assembly-CSharp.dll:.BubbleManager
+4fc81a62c39e11e589ba403d3fdad674 Assembly-CSharp.dll:.BubbleManager
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 db03c06f90ce254358ee71067f5dc162 Assembly-CSharp.dll:.ActionsWithBubbles
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
-16d1df9da93c78b5cbc493a2a697184b Assembly-CSharp.dll:.GameManager
+616c9ae28932c19b4b07a25f05b0cd62 Assembly-CSharp.dll:.GameManager
 b3ec0c38df4527c232efc7d29e0be886 Assembly-CSharp.dll:.actionWithShell
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -168,7 +168,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-3669f5bafa94b2df69831a09dd1d145b Assembly-CSharp.dll:.PauseManager
+c421c538d0bb788bad1858a5acfb106e Assembly-CSharp.dll:.PauseManager
 1bc2dbb125fb01bd2e1ad84a93e3b37a Assembly-CSharp.dll:.BlotManager
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient

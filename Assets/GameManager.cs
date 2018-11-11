@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] SpriteRenderer valik;
     [SerializeField] BubbleManager bubbleManager;
 
-    [SerializeField] private Text healthText;
+    [SerializeField] private GameObject Mode;
     [SerializeField] private Text scoreText;
 
     [SerializeField] GamePlay gamePlay;
@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour {
     private int score;
     private float startTime;
     public int typeOfLine;
+
+    private int countOfEasyMod;
+    private int countOfNormalMod;
+    private int countOfHardMod;
 
     private void soundActive(AudioClip saund)
     {
@@ -95,8 +99,12 @@ public class GameManager : MonoBehaviour {
     public void controlerOfMods()
     {
         int mod = Random.Range(0, 3);
-        if(mod == 0)
+        if(mod == 0 && countOfEasyMod < 2)
         {
+            countOfEasyMod++;
+            countOfNormalMod = 0;
+            countOfHardMod = 0;
+                
           /*speed = 2.5f;
             bubbleManager.typesOfBubbles = 2;
             bubbleManager.minCountOfBubble = 1;
@@ -106,31 +114,42 @@ public class GameManager : MonoBehaviour {
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesEasy;
-            
+            Mode.GetComponent<Text>().text = "EASY";
+            Mode.GetComponent<Text>().color = Color.green;
         }
-        if(mod == 1)
+        if(mod == 1 && countOfNormalMod < 2)
         {
-          /*speed = 2.5f;
-            bubbleManager.typesOfBubbles = 3;
-            bubbleManager.minCountOfBubble = 3;
-            bubbleManager.maxCountOfBables = 5;*/
+            countOfEasyMod = 0;
+            countOfNormalMod++;
+            countOfHardMod = 0;
+            /*speed = 2.5f;
+              bubbleManager.typesOfBubbles = 3;
+              bubbleManager.minCountOfBubble = 3;
+              bubbleManager.maxCountOfBables = 5;*/
             //normal mod
             speed = GamePlayParam.speedNormal;
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesNormal;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleNormal;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesNormal;
+            Mode.GetComponent<Text>().text = "NORMAL";
+            Mode.GetComponent<Text>().color = Color.yellow;
         }
-        if(mod == 2)
+        if(mod == 2 && countOfHardMod < 2)
         {
-          /*speed = 2.3f;
-            bubbleManager.typesOfBubbles = 4;
-            bubbleManager.minCountOfBables = 3;
-            bubbleManager.maxCountOfBubble = 6;*/
+            countOfEasyMod = 0;
+            countOfNormalMod = 0;
+            countOfHardMod++;
+            /*speed = 2.3f;
+              bubbleManager.typesOfBubbles = 4;
+              bubbleManager.minCountOfBables = 3;
+              bubbleManager.maxCountOfBubble = 6;*/
             //toby pizda mod
             speed = GamePlayParam.speedHard;
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesHard;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesHard;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleHard;
+            Mode.GetComponent<Text>().text = "HARD";
+            Mode.GetComponent<Text>().color = Color.red;
         }
     }
 
@@ -178,7 +197,12 @@ public class GameManager : MonoBehaviour {
         bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
         bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
         bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesEasy;
+        countOfEasyMod = 1;
+        countOfNormalMod = 0;
+        countOfHardMod = 0;
 
+        Mode.GetComponent<Text>().text = "EASY";
+        Mode.GetComponent<Text>().color = Color.green;
         typeOfLine = 0;
         MainCam.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
         Line.GetComponent<Animator>().SetInteger("TypeOfLine", typeOfLine);
@@ -196,10 +220,15 @@ public class GameManager : MonoBehaviour {
         speed = 2.5f;
         interval = 40f;*/
 
+        Mode.GetComponent<Text>().text = "EASY";
+        Mode.GetComponent<Text>().color = Color.green;
         health = GamePlayParam.health;
         speed = GamePlayParam.speedEasy;
         interval = GamePlayParam.interval;
-	}
+        countOfEasyMod = 1;
+        countOfNormalMod = 0;
+        countOfHardMod = 0;
+    }
 
 	void Update () {
         if(Time.time - startTime >= interval)

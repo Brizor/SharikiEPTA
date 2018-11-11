@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GamePlayParam {
 
     static public int health = 3;
-    static public float interval = 40f;// период вызова функции возможности изменения мода
+    static public float interval = 30f;// период вызова функции возможности изменения мода
 
     static public float speedEasy = 2.5f;
     static public int minCountOfBablesEasy = 1;

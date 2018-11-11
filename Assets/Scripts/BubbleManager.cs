@@ -14,13 +14,17 @@ public class BubbleManager : MonoBehaviour {
     [SerializeField] GamePlay gamePlay;
     private GameObject newBubble;
  
-    public Transform[] positions = new Transform[12];
+    public Transform[] positions1 = new Transform[11];
+    public Transform[] positions2 = new Transform[11];
     //string[] modes = new string []{"EASY MODE: ", "NORMAL MODE: ", "HARD MODE: " };
 
     public int minCountOfBables;
     private int howMuch;
     public int maxCountOfBubble;
     public int typesOfBubbles;
+
+    private float intervalToCreateDop;
+    private bool canCreateDop = false;
     
     private int[] cutMas(int[] Mas, int avoid)
     {
@@ -38,7 +42,7 @@ public class BubbleManager : MonoBehaviour {
        return MasOfVar;
     }
 
-      private void createBubble(int quantity)
+      private void createBubble(int quantity, Transform[] positions)
       {
         int were;
         int what;
@@ -88,15 +92,14 @@ public class BubbleManager : MonoBehaviour {
                 range--;
             }
          }
-        gameManager.changeColor();
       }
 
       private void startParam()
       {
-       /* typesOfBubbles = 2;
-        minCountOfBubble = 1;
-        maxCountOfBables = 4;*/
-
+        /* typesOfBubbles = 2;
+         minCountOfBubble = 1;
+         maxCountOfBables = 4;*/
+        canCreateDop = false;
         typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
         maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
         minCountOfBables = GamePlayParam.minCountOfBablesEasy;
@@ -107,6 +110,7 @@ public class BubbleManager : MonoBehaviour {
         minCountOfBubble = 1;
         maxCountOfBables = 4;*/
 
+        canCreateDop = false;
         typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
         maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
         minCountOfBables = GamePlayParam.minCountOfBablesEasy;
@@ -115,9 +119,21 @@ public class BubbleManager : MonoBehaviour {
     void Update() {
        if (gameManager.tapsToCreate <= 0 && Time.timeScale != 0)
        {
+            canCreateDop = true;
+            intervalToCreateDop = Time.time;
+         gameManager.changeColor();
          howMuch = Random.Range(minCountOfBables, maxCountOfBubble);
-         gameManager.tapsToCreate = howMuch;
-         createBubble(howMuch);
+         gameManager.tapsToCreate += howMuch;//*2;
+         createBubble(howMuch , positions1);
+         //createBubble(howMuch, positions2);
        }
+       if(Time.time - intervalToCreateDop >= 3f && Time.timeScale != 0 && canCreateDop)
+        {
+            canCreateDop = false;
+            intervalToCreateDop = Time.time;
+            howMuch = Random.Range(minCountOfBables, maxCountOfBubble);
+            gameManager.tapsToCreate += howMuch;
+            createBubble(howMuch, positions1);
+        }
     } 
 } 
