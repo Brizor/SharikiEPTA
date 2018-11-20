@@ -10,7 +10,6 @@ public class BubbleManager : MonoBehaviour {
     [SerializeField] GameObject shellPrefab;
     [SerializeField] GameObject dualPref;
     [SerializeField] GameManager gameManager;
-    [SerializeField] Text textOfMode;
     [SerializeField] GamePlay gamePlay;
     private GameObject newBubble;
  

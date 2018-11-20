@@ -7,6 +7,7 @@ public class actionWithShell : MonoBehaviour {
     public GameManager gameManager;
     [SerializeField] GameObject prefabBubble;
     [SerializeField] GameObject badBubblePrefab;
+    [SerializeField] GameObject particleEfect;
     private int type;
     private float speed;
 
@@ -14,7 +15,10 @@ public class actionWithShell : MonoBehaviour {
     {
         if (collision.tag == "UpLine")
         {
+            gameManager.tapsToCreate -= 2;
             gameManager.bubbleCollision(type);
+            var main = Instantiate(particleEfect, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<ParticleSystem>().main;
+            main.startColor = new Color(0.5119755f, 1f, 0.4941176f, 1f); ;
             Destroy(this.gameObject);
         }
     }

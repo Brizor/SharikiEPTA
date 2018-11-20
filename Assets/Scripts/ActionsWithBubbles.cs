@@ -16,9 +16,9 @@ public class ActionsWithBubbles : MonoBehaviour {
         {
             gameManager.tapsToCreate--;//new
             gameManager.bubbleCollision(type);
-            Destroy(this.gameObject);
             var main = Instantiate(particleEfect, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<ParticleSystem>().main;
             main.startColor = color;
+            Destroy(this.gameObject);
         }
     }
 

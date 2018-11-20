@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\GamePlayParam.cs" />
+    <Compile Include="Assets\GovnoScript.cs" />
     <Compile Include="Assets\Scripts\ActionsWithBubbles.cs" />
     <Compile Include="Assets\Scripts\actionWithShell.cs" />
     <Compile Include="Assets\Scripts\ActionWithUpLine.cs" />

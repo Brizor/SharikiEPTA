@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438891287192656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4346826, y: -1.3204361, z: 0}
+  m_LocalPosition: {x: 2.7827227, y: -2.9215558, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4291314901993144}
@@ -152,6 +152,8 @@ MonoBehaviour:
   prefabBubble: {fileID: 1013756132892926, guid: d83c91913cd42234c96482d5a371fc71,
     type: 2}
   badBubblePrefab: {fileID: 1167956962103118, guid: bdded4df1bcef5442ab703e0a5a9c186,
+    type: 2}
+  particleEfect: {fileID: 1601974227379200, guid: 1d0b64d35eee67c45b212ddd88045954,
     type: 2}
 --- !u!212 &212671195140215346
 SpriteRenderer:
