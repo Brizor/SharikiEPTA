@@ -8,12 +8,7 @@ public class BubbleMove : MonoBehaviour {
 
     public float speed;
 
-    private void Awake()
-    {
-        
-    }
     void Start () {
-
         speed = gameManager.speed;
 	}
 

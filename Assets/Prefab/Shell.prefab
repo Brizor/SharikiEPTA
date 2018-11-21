@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 58499914546005154}
   - component: {fileID: 50090661429596428}
   - component: {fileID: 114435412729560868}
+  - component: {fileID: 114438648921064900}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -155,6 +156,20 @@ MonoBehaviour:
     type: 2}
   particleEfect: {fileID: 1601974227379200, guid: 1d0b64d35eee67c45b212ddd88045954,
     type: 2}
+  type: 2
+--- !u!114 &114438648921064900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438891287192656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df80545b0445dfb4786a297ea7e51b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  speed: 0
 --- !u!212 &212671195140215346
 SpriteRenderer:
   m_ObjectHideFlags: 1

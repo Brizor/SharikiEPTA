@@ -14,7 +14,7 @@ public class ActionsWithBubbles : MonoBehaviour {
     {
         if (collision.tag == "UpLine")
         {
-            gameManager.tapsToCreate--;//new
+            gameManager.tapsToCreate--;
             gameManager.bubbleCollision(type);
             var main = Instantiate(particleEfect, new Vector3(transform.position.x, transform.position.y, 3f), transform.rotation).GetComponent<ParticleSystem>().main;
             main.startColor = color;

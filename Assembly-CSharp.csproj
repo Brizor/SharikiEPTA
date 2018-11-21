@@ -62,19 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\GamePlayParam.cs" />
-    <Compile Include="Assets\GovnoScript.cs" />
     <Compile Include="Assets\Scripts\ActionsWithBubbles.cs" />
     <Compile Include="Assets\Scripts\actionWithShell.cs" />
-    <Compile Include="Assets\Scripts\ActionWithUpLine.cs" />
     <Compile Include="Assets\Scripts\BlotManager.cs" />
     <Compile Include="Assets\Scripts\BubbleManager.cs" />
     <Compile Include="Assets\Scripts\BubbleMove.cs" />
     <Compile Include="Assets\Scripts\DualBubbleAction.cs" />
     <Compile Include="Assets\Scripts\GamePlayPar.cs" />
-    <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\GamePlayParam.cs" />
+    <Compile Include="Assets\Scripts\GovnoScript.cs" />
+    <Compile Include="Assets\Scripts\ParticleScript.cs" />
     <Compile Include="Assets\Scripts\PauseManager.cs" />
-    <Compile Include="Assets\Sprites\ParticleScript.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Tutorials/ConceptBubbles/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

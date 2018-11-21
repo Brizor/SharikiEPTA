@@ -416,7 +416,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   particleEfect: {fileID: 1601974227379200, guid: 1d0b64d35eee67c45b212ddd88045954,
     type: 2}
-  type: 0
+  type: 1
 --- !u!212 &212548905665082536
 SpriteRenderer:
   m_ObjectHideFlags: 1

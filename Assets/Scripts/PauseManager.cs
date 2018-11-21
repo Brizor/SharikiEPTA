@@ -15,6 +15,7 @@ public class PauseManager : MonoBehaviour {
 
     public void gameOver(int score)
     {
+        Time.timeScale = 0;
         scorePanel.SetActive(false);
         pausePanel.SetActive(true);
         modeText.SetActive(false);

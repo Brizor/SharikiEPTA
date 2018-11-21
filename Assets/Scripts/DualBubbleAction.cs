@@ -7,8 +7,7 @@ public class DualBubbleAction : MonoBehaviour {
     [SerializeField] GameObject prefabBubble;
     [SerializeField] GameObject badBubblePrefab;
     [SerializeField] GameObject particleEfect;
-    private int type;
-    private float speed;
+    public int type;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,8 +46,6 @@ public class DualBubbleAction : MonoBehaviour {
     void Start()
     {
         gameManager.tapsToCreate += 2;
-        speed = gameManager.speed;
-        type = 3;
     }
 
     void Update()
@@ -57,6 +54,5 @@ public class DualBubbleAction : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-        transform.position += new Vector3(0, -speed * Time.deltaTime, 0);
     }
 }

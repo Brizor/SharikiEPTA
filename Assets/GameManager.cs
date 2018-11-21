@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour {
     private int countOfNormalMod;
     private int countOfHardMod;
 
+    private float dopSpeed;
+    private int countToDop;
+
     private void soundActive(AudioClip saund)
     {
         AudioSource adioSource = GetComponent<AudioSource>();
@@ -99,6 +102,16 @@ public class GameManager : MonoBehaviour {
 
     public void controlerOfMods()
     {
+        countToDop++;//experement
+        if(countToDop >= 2)//experement
+        {
+            countToDop = 0;//experement
+            if (dopSpeed <= 1f)//experement
+            {
+                dopSpeed += 0.1f;//experement
+            }
+        }//experement
+
         int mod = Random.Range(0, 3);
         if(mod == 0 && countOfEasyMod < 2)
         {
@@ -111,7 +124,7 @@ public class GameManager : MonoBehaviour {
             bubbleManager.minCountOfBubble = 1;
             bubbleManager.maxCountOfBables = 4;*/
             //easy mod
-            speed = GamePlayParam.speedEasy;
+            speed = GamePlayParam.speedEasy + dopSpeed;//experement
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesEasy;
@@ -131,7 +144,7 @@ public class GameManager : MonoBehaviour {
               bubbleManager.minCountOfBubble = 3;
               bubbleManager.maxCountOfBables = 5;*/
             //normal mod
-            speed = GamePlayParam.speedNormal;
+            speed = GamePlayParam.speedNormal + dopSpeed;//experement
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesNormal;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleNormal;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesNormal;
@@ -151,7 +164,7 @@ public class GameManager : MonoBehaviour {
               bubbleManager.minCountOfBables = 3;
               bubbleManager.maxCountOfBubble = 6;*/
             //toby pizda mod
-            speed = GamePlayParam.speedHard;
+            speed = GamePlayParam.speedHard + dopSpeed;//experement
             bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesHard;
             bubbleManager.minCountOfBables = GamePlayParam.minCountOfBablesHard;
             bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleHard;
@@ -201,8 +214,11 @@ public class GameManager : MonoBehaviour {
         bubbleManager.minCountOfBables = 1;
         interval = 40f;*/
 
+        dopSpeed = 0f;//experement
+        countToDop = 0;//experement
+
         health = GamePlayParam.health;
-        speed = GamePlayParam.speedEasy;
+        speed = GamePlayParam.speedEasy + dopSpeed;//experement
         interval = GamePlayParam.interval;
         bubbleManager.typesOfBubbles = GamePlayParam.typesOfBubblesEasy;
         bubbleManager.maxCountOfBubble = GamePlayParam.maxCountOfBubbleEasy;
@@ -230,6 +246,9 @@ public class GameManager : MonoBehaviour {
         typeOfLine = 0;
         startTime = Time.time;
 
+        dopSpeed = 0f;//experement
+        countToDop = 0;//experement
+
         /*health = 3;
         speed = 2.5f;
         interval = 40f;*/
@@ -242,7 +261,7 @@ public class GameManager : MonoBehaviour {
         
 
         health = GamePlayParam.health;
-        speed = GamePlayParam.speedEasy;
+        speed = GamePlayParam.speedEasy + dopSpeed;//experement
         interval = GamePlayParam.interval;
         countOfEasyMod = 1;
         countOfNormalMod = 0;
@@ -250,7 +269,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	void Update () {
-        if(Time.time - startTime >= interval && tapsToCreate <= 0)
+        if(Time.time - startTime >= interval && tapsToCreate <= 0 && Time.timeScale != 0)
         {
             bubbleManager.gameObject.SetActive(false);
             startTime = Time.time;

@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 50140334245354754}
   - component: {fileID: 58881492411178428}
   - component: {fileID: 114254046883828166}
+  - component: {fileID: 114252496212477978}
   m_Layer: 0
   m_Name: DualBubble
   m_TagString: Untagged
@@ -137,6 +138,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &114252496212477978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1839569712852322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df80545b0445dfb4786a297ea7e51b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  speed: 0
 --- !u!114 &114254046883828166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +169,7 @@ MonoBehaviour:
     type: 2}
   particleEfect: {fileID: 1601974227379200, guid: 1d0b64d35eee67c45b212ddd88045954,
     type: 2}
+  type: 3
 --- !u!212 &212379286578980326
 SpriteRenderer:
   m_ObjectHideFlags: 1

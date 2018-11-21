@@ -15,7 +15,6 @@ public class BubbleManager : MonoBehaviour {
  
     public Transform[] positions1 = new Transform[11];
     public Transform[] positions2 = new Transform[11];
-    //string[] modes = new string []{"EASY MODE: ", "NORMAL MODE: ", "HARD MODE: " };
 
     public int minCountOfBables;
     private int howMuch;
@@ -63,7 +62,7 @@ public class BubbleManager : MonoBehaviour {
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
-                newBubble.GetComponent<ActionsWithBubbles>().type = what;
+               // newBubble.GetComponent<ActionsWithBubbles>().type = what;
                 range--;
             }
 
@@ -73,13 +72,14 @@ public class BubbleManager : MonoBehaviour {
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
                 newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<ActionsWithBubbles>().gameManager = this.gameManager;
-                newBubble.GetComponent<ActionsWithBubbles>().type = what;
+                //newBubble.GetComponent<ActionsWithBubbles>().type = what;
                 range--;
             }
             if(what == 2)
             {
                 newBubble = Instantiate(shellPrefab, positions[MasOfVar[were]].position, transform.rotation);
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
+                newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<actionWithShell>().gameManager = this.gameManager;
                 range--;
             }
@@ -87,6 +87,7 @@ public class BubbleManager : MonoBehaviour {
             {
                 newBubble = Instantiate(dualPref, positions[MasOfVar[were]].position, transform.rotation);
                 MasOfVar = cutMas(MasOfVar, MasOfVar[were]);
+                newBubble.GetComponent<BubbleMove>().gameManager = this.gameManager;
                 newBubble.GetComponent<DualBubbleAction>().gameManager = this.gameManager;
                 range--;
             }
